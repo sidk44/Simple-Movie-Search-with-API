@@ -4,6 +4,12 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import searchIcon from './search.svg'
 import MovieCard from './MovieCard'
+import sampleDarkTheme from './theme.jsx'; 
+import SuprSendInbox from '@suprsend/react-inbox'
+
+// import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // needed for toast notifications, can be ignored if hideToast=true
+
 
 //32d0c950
 const API_URL = 'https://www.omdbapi.com?apikey=32d0c950'
@@ -31,8 +37,116 @@ const App = () => {
 
   },[]);
 
-  return (
+return (
   <div className="app">
+    <SuprSendInbox
+      workspaceKey= "SS.DNzyUz4D4PtVFdu9afYTtwcTqt5QoVJoEze_G3JcJYE"
+      subscriberId= "SS.wXzphs2KAKNowXY2jjxwKMlKVhs6FkmSON81LmZm1LQ"
+      distinctId= "SS._ilTszOMtCM2jr75xUaJxHzHetDjyvoqltxWePYVBEQ"
+      themeType="dark"
+      
+      // IF CUSTOM DESIGN IS NEEDED:
+      // bellComponent={() => <p>MyBell</p>}
+      // badgeComponent={(count) => <p>{count}</p>}
+      // tabBadgeComponent={({ count }) =>  <p>{count}</p>}
+
+      // notificationComponent={({ notificationData }) => (
+      //   <p>{JSON.stringify(notificationData)}</p>
+      // )}
+
+      // notificationClickHandler={(notificationData) => {
+      //   console.log('notification clicked', notificationData)
+      // }}
+      // noNotificationsComponent={() => <p>No Notifications</p>}
+
+      
+      theme={{
+        bell: { color: 'white' },
+        badge: { backgroundColor: 'pink', color: 'black', margin: '0px' },
+        //header
+        header: {
+          container: { backgroundColor: 'grey' },
+          headertext: { color: '#333333' },
+          markAllReadText: { color: 'red' },
+        },
+        tabs: {
+          color: 'red',
+          unselectedColor: 'gray',
+          bottomColor: 'red',
+          badgeColor: 'red',
+          badgeText: 'red',
+        },
+
+        notification: {
+          container: {
+            readBackgroundColor: 'gray',
+            unreadBackgroundColor: 'gray',
+            hoverBackgroundColor: 'gray',
+
+          },
+          headerText: { color: '#333333' },
+          bodyText: { color: '#333333',blockquoteColor: 'red',linkColor: 'red' },
+          unseenDot: { backgroundColor: 'gray' },
+          subtext: { color: 'red' },
+          actions: [
+            //primary button
+            { container: { backgroundColor: 'red' , hoverBackgroundColor: 'red' },text: { color: 'yellow' }},
+
+            // Secondary button text
+            { container: { backgroundColor: 'red' , hoverBackgroundColor: 'red' },text: { color: 'yellow' }},
+  
+            
+          ],
+          
+          expiresText: {
+            backgroundColor: 'red',
+            color: 'red',
+            expiringBackgroundColor: 'darkred',
+            expiringColor: 'darkred',
+          },
+          pinnedText: { color: 'red' },
+          pinnedIcon: { color: 'red' },
+
+          actionsMenuIcon: { color: 'red' },
+          // hoverBackgroundColor: { color: 'red' },
+          actionsMenu: {
+            backgroundColor: 'red',
+            borderColor: 'red',
+          },
+          actionsMenuItem: {
+            hoverBackgroundColor: 'red',
+          },
+          actionsMenuItemIcon: { color: 'red'},
+          actionsMenuItemText: { color: 'red' },
+        },
+
+        toast: {
+          container: { backgroundColor: 'white' },
+          headerText: { color: '#333333' },
+          bodyText: { color: '#333333', blockquoteColor: '#333333', linkColor: '#333333' },
+        },
+        notificationsContainer: {
+          noNotificationsText: { backgroundColor: '', color: 'white' },
+          noNotificationsSubtext: { backgroundColor: '', color: 'white' }
+        }
+      }}
+
+      popperPosition="bottom" // default is bottom-right
+      toastProps={{
+        position: 'bottom-right',
+        duration: 3000, // 3 seconds
+        limit: 3,
+        toastComponent: ({ notificationData }) => <p>New Notification: {notificationData.title}</p>
+      }}
+       // hideToast={true}
+      // hideAvatar={false}
+
+    />
+
+
+
+
+
     <h1>Movies Now</h1>
     <br></br>
     <div className="search">
