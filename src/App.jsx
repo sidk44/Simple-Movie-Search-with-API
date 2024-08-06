@@ -40,7 +40,7 @@ const App = () => {
 return (
   <div className="app">
     <SuprSendInbox
-      workspaceKey= "SS.DNzyUz4D4PtVFdu9afYTtwcTqt5QoVJoEze_G3JcJYE"
+      workspaceKey= "OJYrli1GH1Sc8lGbY8Ir"
       subscriberId= "SS.wXzphs2KAKNowXY2jjxwKMlKVhs6FkmSON81LmZm1LQ"
       distinctId= "SS._ilTszOMtCM2jr75xUaJxHzHetDjyvoqltxWePYVBEQ"
       themeType="dark"
